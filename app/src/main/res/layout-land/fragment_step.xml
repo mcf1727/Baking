@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020 The Android Open Source Project
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".stepPage.StepActivity">
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:show_timeout="2000"
+        app:controller_layout_id="@layout/exo_playback_control_view" />
+
+    <TextView
+        android:id="@+id/tv_step_instruction"
+        android:background="@drawable/border"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/recipe_step_instruction" />
+
+    <TextView
+        android:id="@+id/tv_step_next_previous"
+        android:background="@drawable/border"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/navigation_to_next_or_previous_step" />
+
+</LinearLayout>

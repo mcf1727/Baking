@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="ThemeOverlay.Baking.AppWidgetContainer" parent="">
+        <item name="appWidgetBackgroundColor">@color/light_brown_900</item>
+        <item name="appWidgetTextColor">@color/light_brown_200</item>
+    </style>
+</resources>

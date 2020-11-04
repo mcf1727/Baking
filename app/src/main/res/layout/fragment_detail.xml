@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020 The Android Open Source Project
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".detailPage.DetailActivity">
+
+    <TextView
+        android:id="@+id/tv_detail_ingredients"
+        android:background="@drawable/border"
+        style="@style/detailStyle"
+        android:layout_marginTop="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:gravity="center"
+        android:textSize="28sp"
+        android:text="@string/recipe_ingredients" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_steps"
+        style="@style/detailStyle"
+        android:layout_marginBottom="10dp" />
+
+</LinearLayout>

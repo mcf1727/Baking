@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Baking</string>
+    <string name="recipe_ingredients">Recipe Ingredients</string>
+    <string name="media_player">Media player</string>
+    <string name="video_not_available">Video not available.</string>
+    <string name="network_not_available">Network not available.</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="recipe_step_instruction">Recipe step instruction</string>
+    <string name="navigation_to_next_or_previous_step">Navigation to next or previous step?</string>
+    <string name="select_a_recipe">Select a Recipe</string>
+    <string name="must_implement_onstepclicklistener"> must implement OnStepClickListener</string>
+    <string name="INGREDIENTS_WIDGET">ingredients_widget</string>
+    <string name="RECIPE_NAME_WIDGET">recipe_name_widget</string>
+    <string name="RECIPE_DEFAULT_NAME_WIDGET">Recipe</string>
+    <string name="NO_INTERNET_TOAST">No Internet connexion</string>
+</resources>
