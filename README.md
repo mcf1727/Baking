@@ -17,7 +17,7 @@
 
      for phones:  
 <center class="half">
-    <img height="600" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_detail.jpg"/>  <img height="600" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_step.jpg"/>
+    <img height="600" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_detail.jpg"/><img height="600" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_step.jpg"/>
 </center>
 
      for tablets:  
