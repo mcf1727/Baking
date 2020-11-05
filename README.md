@@ -17,11 +17,11 @@
 
      for phones:  
 <center class="half">
-    <img height="600" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_detail.jpg"/><img height="600" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_step.jpg"/>
+    <img width="300" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_detail.jpg"/><img width="300" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_step.jpg"/>
 </center>
 
      for tablets:  
 <div align=center><img width="600" alt="layout_tablet" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_tablet.jpg"/></div>
 
 - Timely updated widget on the home screen
-<div align=center><img height="600" alt="widget" src="https://github.com/mcf1727/Baking/blob/master/photos/widget.jpg"/></div>
+<div align=center><img width="300" alt="widget" src="https://github.com/mcf1727/Baking/blob/master/photos/widget.jpg"/></div>
