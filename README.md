@@ -17,7 +17,7 @@
 
 for phones:  
 <div align="center">
-    <img width="300" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_detail.jpg"/>  <img width="300" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_step.jpg"/>
+    <img width="300" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_detail.jpg"/>     <img width="300" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone_step.jpg"/>
 </div>
 
 for tablets:  
