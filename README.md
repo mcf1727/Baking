@@ -16,7 +16,8 @@
 - Layout adapted for phones & tablets  
      for phones:  
 <div align=center><img height="600" alt="layout_phone" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_phone.jpg"/></div>
-     for tablets:![layout_tablet](https://github.com/mcf1727/Baking/blob/master/photos/layout_tablet.jpg)
+     for tablets:
+<div align=center><img alt="layout_tablet" src="https://github.com/mcf1727/Baking/blob/master/photos/layout_tablet.jpg"/></div>
 
-- Timly updated widget on the home screen
+- Timely updated widget on the home screen
 <div align=center><img height="600" alt="[widget]" src="https://github.com/mcf1727/Baking/blob/master/photos/widget.jpg"/></div>
