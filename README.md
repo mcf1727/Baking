@@ -11,8 +11,8 @@
 
 ## Overview
 - Full screen landscape mode phone of the Player
-[exoplayer_phone_land](https://github.com/mcf1727/Baking/blob/master/photos/exoplayer_phone_land.jpg)
+![exoplayer_phone_land](https://github.com/mcf1727/Baking/blob/master/photos/exoplayer_phone_land.jpg)
 - Layout adapted for phones & tablets
-[layout_phone](https://github.com/mcf1727/Baking/blob/master/photos/layout_phone.jpg)  [layout_tablet](https://github.com/mcf1727/Baking/blob/master/photos/layout_tablet.jpg)
+![layout_phone](https://github.com/mcf1727/Baking/blob/master/photos/layout_phone.jpg)  ![layout_tablet](https://github.com/mcf1727/Baking/blob/master/photos/layout_tablet.jpg)
 - Timly updated widget on the home screen
-[widget](https://github.com/mcf1727/Baking/blob/master/photos/widget.jpg)
+![widget](https://github.com/mcf1727/Baking/blob/master/photos/widget.jpg)
