@@ -34,7 +34,6 @@ import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.util.Util;
 
 public class StepFragment extends Fragment implements View.OnClickListener{
 
@@ -127,21 +126,13 @@ public class StepFragment extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        if (Util.SDK_INT >= 24) {
-            initializePlayer(mVideoURL);
-        }
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         if (!mTwoPane && getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             hideSystemUi();
         }
 
-        if ((Util.SDK_INT < 24 || mPlayer == null)) {
+        if (mPlayer == null) {
             initializePlayer(mVideoURL);
         }
     }
@@ -216,20 +207,10 @@ public class StepFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onPause() {
         super.onPause();
-        if (Util.SDK_INT < 24) {
             releasePlayer();
             mMediaSession.setActive(false);
-        }
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (Util.SDK_INT >= 24) {
-            releasePlayer();
-            mMediaSession.setActive(false);
-        }
-    }
 
     private void releasePlayer() {
         if (mPlayer != null) {
