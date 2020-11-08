@@ -29,6 +29,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.media.session.MediaButtonReceiver;
 
+import com.google.android.exoplayer2.ControlDispatcher;
 import com.google.android.exoplayer2.DefaultControlDispatcher;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.Player;
@@ -38,6 +39,12 @@ import com.google.android.exoplayer2.ui.PlayerView;
 public class StepFragment extends Fragment implements View.OnClickListener{
 
     private static final String TAG = StepFragment.class.getSimpleName();
+    private static final String PLAY_WHEN_READY = "android.example.com.baking.PLAY_WHEN_READY";
+    private static final String CURRENT_WINDOW = "android.example.com.baking.CURRENT_WINDOW";
+    private static final String PLAYBACK_POSITION = "android.example.com.baking.PLAYBACK_POSITION";
+    private static final String STEP_INSTRUCTION = "android.example.com.baking.STEP_INSTRUCTION";
+    private static final String VIDEO_URL = "android.example.com.baking.VIDEO_URL";
+    private static final String TWO_PANE = "android.example.com.baking.TWO_PANE";
     private boolean playWhenReady = false;
     private int currentWindow = 0;
     private long playbackPosition = 0;
@@ -69,11 +76,21 @@ public class StepFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_step, container, false);
 
+        if (savedInstanceState != null) {
+            playWhenReady = savedInstanceState.getBoolean(PLAY_WHEN_READY);
+            currentWindow = savedInstanceState.getInt(CURRENT_WINDOW);
+            playbackPosition = savedInstanceState.getLong(PLAYBACK_POSITION);
+            mStepInstruction = savedInstanceState.getString(STEP_INSTRUCTION);
+            mVideoURL = savedInstanceState.getString(VIDEO_URL);
+            mTwoPane = savedInstanceState.getBoolean(TWO_PANE);
+        }
+
         mPlayerView = rootView.findViewById(R.id.video_view);
         mStepInstructionTextView = rootView.findViewById(R.id.tv_step_instruction);
         mNextPreviousStepTextView = rootView.findViewById(R.id.tv_step_next_previous);
 
         playbackStateListener = new PlaybackStateListener();
+
         initializeMediaSession();
 
         mStepInstructionTextView.setText(mStepInstruction);
@@ -87,25 +104,6 @@ public class StepFragment extends Fragment implements View.OnClickListener{
         }
 
         return rootView;
-    }
-
-    /**
-     * When the phone is rotated
-     */
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        if (!mTwoPane) {
-            if (getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                hideSystemUi();
-                mStepInstructionTextView.setVisibility(View.GONE);
-                mNextPreviousStepTextView.setVisibility(View.GONE);
-            } else {
-                showSystemUi();
-                mStepInstructionTextView.setVisibility(View.VISIBLE);
-                mNextPreviousStepTextView.setVisibility(View.VISIBLE);
-            }
-        }
     }
 
     private void initializeMediaSession() {
@@ -159,6 +157,24 @@ public class StepFragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    /**
+     * When the phone is rotated
+     */
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (!mTwoPane) {
+            if (getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                hideSystemUi();
+                mStepInstructionTextView.setVisibility(View.GONE);
+                mNextPreviousStepTextView.setVisibility(View.GONE);
+            } else {
+                showSystemUi();
+                mStepInstructionTextView.setVisibility(View.VISIBLE);
+                mNextPreviousStepTextView.setVisibility(View.VISIBLE);
+            }
+        }
+    }
 
     /**
      * Modify the behavior for the play button under special conditions
@@ -211,6 +227,20 @@ public class StepFragment extends Fragment implements View.OnClickListener{
             mMediaSession.setActive(false);
     }
 
+    /**
+     * Save the playback information in case the App is killed by OS
+     * @param outState
+     */
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(PLAY_WHEN_READY, playWhenReady);
+        outState.putInt(CURRENT_WINDOW, currentWindow);
+        outState.putLong(PLAYBACK_POSITION, playbackPosition);
+        outState.putString(STEP_INSTRUCTION, mStepInstruction);
+        outState.putString(VIDEO_URL, mVideoURL);
+        outState.putBoolean(TWO_PANE, mTwoPane);
+    }
 
     private void releasePlayer() {
         if (mPlayer != null) {

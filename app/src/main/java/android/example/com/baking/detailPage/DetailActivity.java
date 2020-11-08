@@ -8,7 +8,6 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.example.com.baking.R;
-import android.example.com.baking.widget.RecipeWidgetProvider;
 import android.example.com.baking.data.Ingredient;
 import android.example.com.baking.data.Recipe;
 import android.example.com.baking.data.Step;
@@ -16,6 +15,7 @@ import android.example.com.baking.ingredientsPage.IngredientsActivity;
 import android.example.com.baking.ingredientsPage.IngredientsFragment;
 import android.example.com.baking.stepPage.StepActivity;
 import android.example.com.baking.stepPage.StepFragment;
+import android.example.com.baking.widget.RecipeWidgetProvider;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -61,7 +61,6 @@ public class DetailActivity extends AppCompatActivity implements DetailFragment.
                             .commit();
                     detailFragment.setSteps(mSteps);
 
-
                     setTitle(mRecipe.getName());
                 }
             }
@@ -74,27 +73,30 @@ public class DetailActivity extends AppCompatActivity implements DetailFragment.
             ingredientsFrameLayout = findViewById(R.id.ingredients_container);
             stepFrameLayout = findViewById(R.id.step_container);
 
-            StepFragment stepFragment = new StepFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.step_container, stepFragment)
-                    .commit();
+            if (savedInstanceState == null) {
 
-            Step mStep = mSteps[0];
-            String stepInstruction;
-            String videoURL;
+                StepFragment stepFragment = new StepFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.step_container, stepFragment)
+                        .commit();
 
-            if (mStep != null) {
-                stepInstruction = mStep.getDescription();
-                videoURL = mStep.getVideoURL();
-                stepFragment.setVideoURL(videoURL);
+                Step mStep = mSteps[0];
+                String stepInstruction;
+                String videoURL;
 
-                if (stepInstruction != null) {
-                    stepFragment.setStepInstruction(stepInstruction);
+                if (mStep != null) {
+                    stepInstruction = mStep.getDescription();
+                    videoURL = mStep.getVideoURL();
+                    stepFragment.setVideoURL(videoURL);
+
+                    if (stepInstruction != null) {
+                        stepFragment.setStepInstruction(stepInstruction);
+                    }
                 }
-            }
 
-            stepFragment.setTwoPane(mTwoPane);
+                stepFragment.setTwoPane(mTwoPane);
+            }
 
         } else {
             mTwoPane = false;
@@ -190,6 +192,10 @@ public class DetailActivity extends AppCompatActivity implements DetailFragment.
 
             startActivity(intentToStartIngredientsActivity);
         }
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

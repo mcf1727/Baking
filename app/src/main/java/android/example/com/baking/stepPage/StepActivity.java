@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.example.com.baking.R;
 import android.example.com.baking.data.Step;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -21,35 +22,44 @@ public class StepActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step);
 
-        StepFragment stepFragment = new StepFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.step_container, stepFragment)
-                .commit();
+        if (savedInstanceState == null) {
 
-        Intent intentThatStartedThisActivity = getIntent();
-        if (intentThatStartedThisActivity != null) {
-            if (intentThatStartedThisActivity.hasExtra(EXTRA_STEP)) {
-                Step mStep = intentThatStartedThisActivity.getParcelableExtra(EXTRA_STEP);
+            StepFragment stepFragment = new StepFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .add(R.id.step_container, stepFragment)
+                    .commit();
 
-                if (mStep != null) {
-                    String stepInstruction = mStep.getDescription();
-                    String videoURL = mStep.getVideoURL();
-                    stepFragment.setVideoURL(videoURL);
+            Intent intentThatStartedThisActivity = getIntent();
+            if (intentThatStartedThisActivity != null) {
+                if (intentThatStartedThisActivity.hasExtra(EXTRA_STEP)) {
+                    Step mStep = intentThatStartedThisActivity.getParcelableExtra(EXTRA_STEP);
 
-                    if (stepInstruction != null) {
-                        stepFragment.setStepInstruction(stepInstruction);
+                    if (mStep != null) {
+                        String stepInstruction = mStep.getDescription();
+                        String videoURL = mStep.getVideoURL();
+                        stepFragment.setVideoURL(videoURL);
+
+                        if (stepInstruction != null) {
+                            stepFragment.setStepInstruction(stepInstruction);
+                        }
+                    }
+                }
+
+                if (intentThatStartedThisActivity.hasExtra(EXTRA_RECIPE_NAME)) {
+                    String mRecipeName = intentThatStartedThisActivity.getStringExtra(EXTRA_RECIPE_NAME);
+
+                    if (mRecipeName != null) {
+                        setTitle(mRecipeName);
                     }
                 }
             }
-
-            if (intentThatStartedThisActivity.hasExtra(EXTRA_RECIPE_NAME)) {
-                String mRecipeName = intentThatStartedThisActivity.getStringExtra(EXTRA_RECIPE_NAME);
-
-                if (mRecipeName != null) {
-                    setTitle(mRecipeName);
-                }
-            }
         }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Lis
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_main);
         mRecyclerView.setHasFixedSize(true);
+
         mRecipeAdapter = new RecipeAdapter(this);
         mRecyclerView.setAdapter(mRecipeAdapter);
 
@@ -111,5 +112,10 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Lis
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = Objects.requireNonNull(cm).getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

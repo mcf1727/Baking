@@ -12,9 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.gson.Gson;
 
 public class DetailFragment extends Fragment implements StepAdapter.ListItemClickListener, View.OnClickListener{
 
@@ -52,12 +55,14 @@ public class DetailFragment extends Fragment implements StepAdapter.ListItemClic
         TextView mIngredientsTextView = rootView.findViewById(R.id.tv_detail_ingredients);
         mIngredientsTextView.setOnClickListener(this);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        mStepRecyclerView.setLayoutManager(layoutManager);
-        mStepRecyclerView.setHasFixedSize(true);
-        StepAdapter mStepAdapter = new StepAdapter(this);
-        mStepRecyclerView.setAdapter(mStepAdapter);
-        mStepAdapter.setStepData(mSteps);
+        if (savedInstanceState == null) {
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+            mStepRecyclerView.setLayoutManager(layoutManager);
+            mStepRecyclerView.setHasFixedSize(true);
+            StepAdapter mStepAdapter = new StepAdapter(this);
+            mStepRecyclerView.setAdapter(mStepAdapter);
+            mStepAdapter.setStepData(mSteps);
+        }
 
         return rootView;
     }
